@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>星语心愿</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            background: #000;
+            overflow: hidden;
+            font-family: system-ui, -apple-system, '楷体', sans-serif;
+        }
+
+        .meteor {
+            position: absolute;
+            height: 40px;
+            width: 1px;
+            background: linear-gradient(45deg, #fff, transparent);
+            animation: meteorFall 3.5s linear infinite;
+            transform: rotate(calc(Math.random() * 150deg - 75deg));
+            opacity: 0.8;
+        }
+
+        @keyframes meteorFall {
+            0% {
+                transform: translate(calc(100% + 30px), calc(-100% - 30px)) rotate(calc(Math.random() * 150deg - 75deg));
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(calc(-100% - 30px), calc(100% + 30px));
+                opacity: 0;
+            }
+        }
+
+        #openBtn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 18px 45px;
+            font-size: 24px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        #poem {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 35px 25px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            width: 90%;
+            max-width: 500px;
+            backdrop-filter: blur(20px);
+            z-index: 200;
+        }
+
+        .poem-title {
+            font-size: 28px;
+            color: #ffb3b3;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 179, 179, 0.6);
+        }
+
+        .poem-line {
+            font-size: 20px;
+            line-height: 1.8;
+            color: white;
+            margin: 12px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .seal {
+            font-family: '篆书', sans-serif;
+            color: white;
+            background: #c33;
+            padding: 12px 25px;
+            border: 3px solid #a00;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 25px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            meteor.style.left = `${Math.random() * 100}%`;
+            meteor.style.top = `-${Math.random() * 100}%`;
+            meteor.style.animationDelay = `${Math.random() * 1.5}s`;
+            document.body.appendChild(meteor);
+            setTimeout(() => meteor.remove(), 4000);
+        }
+
+        for (let i = 0; i < 15; i++) createMeteor();
+    </script>
+
+    <button id="openBtn">qyd 亲启</button>
+
+    <div id="poem">
+        <div class="poem-title">✦ 星语心愿 ✦</div>
+        <div class="poem-line">亦见星河落九天</div>
+        <div class="poem-line">丹心一片寄云笺</div>
+        <div class="poem-line">美目流盼春水漾</div>
+        <div class="poem-line">女红巧手绣婵娟</div>
+        <div class="poem-line">最是清风知我意</div>
+        <div class="poem-line">可人如玉月羞颜</div>
+        <div class="poem-line">爱寄长空伴鹤眠</div>
+        <div class="seal">道爱丹丘</div>
+    </div>
+
+    <script>
+        document.getElementById('openBtn').addEventListener('click', function() {
+            this.style.display = 'none';
+            document.getElementById('poem').style.display = 'block';
+            document.body.style.backgroundImage = "url('https://picsum.photos/1080/1920?random=100')";
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center top';
+            document.body.style.backgroundAttachment = 'fixed';
+        });
+    </script>
+</body>
+</html>
+    
